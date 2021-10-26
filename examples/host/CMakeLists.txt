@@ -84,4 +84,9 @@ if (APPLE)
   target_link_libraries(clap-host ${CARBON} ${AUDIO_UNIT} ${AUDIO_TOOLBOX} ${CORE_MIDI} ${CORE_AUDIO} ${CORE_SERVICES} ${CORE_FOUNDATION})
 endif()
 
+# Necessary for Qt6 on Win with C++17
+if (MSVC)
+  target_compile_options(clap-host PRIVATE /Zc:__cplusplus)
+endif()
+
 install(TARGETS clap-host DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
