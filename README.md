@@ -110,4 +110,4 @@ For the example host you'll need to install Qt6, PortAudio and PortMidi.
 
 Qt6 requires you to create an account during installation, but you can also compile it from source. After installation, you'll have to put the `bin` path to the %PATH% system environment variable, like `C:\Qt\6.2.1\mingw81_64\bin`.  
 
-For the rest of the dependencies, checkout the vcpkg git submodule included in this repo and run the `.\vcpkg\bootstrap-vcpkg.bat` file. After that, CMake should be able to acquire the necessary packages automatically through vcpkg.
+For the rest of the dependencies, CMake should be able to automatically detect vcpkg, bootstrap and acquire the necessary packages.
