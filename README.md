@@ -108,6 +108,23 @@ brew install pkgconfig
 
 For the example host you'll need to install Qt6, PortAudio and PortMidi.  
 
-Qt6 requires you to create an account during installation, but you can also compile it from source. After installation, you'll have to put the `bin` path to the %PATH% system environment variable, like `C:\Qt\6.2.1\mingw81_64\bin`.  
+Qt6 requires you to create an account during installation, but you can also compile it from source. If you're building with MSVC, you cannot use the prebuilt Qt6 (mingw) or you'll get linker errors. For building from source:
+´´´powershell
+choco install python strawberryperl -y # install Python3 and Perl
+git clone -b 6.2.1 git://code.qt.io/qt/qt5.git
+cd qt5
+perl init-repository
+```
+Open a `x64 Native Tools Command Prompt for VS 2019` terminal and run:
+```batch
+mkdir /c/Qt/6.2.1
+mkdir qt5/build
+cd qt5
+..\configure.bat -release -no-pch -prefix "c:/Qt/6.2.1-git" -skip qtwebengine -nomake tools -nomake tests -nomake examples
+cmake --build . --parallel
+cmake --install .
+```
+
+After building/installation, you'll have to put the `bin` path to the %PATH% system environment variable, like `C:\Qt\6.2.1\mingw81_64\bin` (downloaded installer) or `C:\Qt\6.2.1` (built from source).  
 
 For the rest of the dependencies, CMake should be able to automatically detect vcpkg, bootstrap and acquire the necessary packages.
