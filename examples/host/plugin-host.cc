@@ -539,7 +539,7 @@ void PluginHost::eventLoopSetFdNotifierFlags(clap_fd fd, uint32_t flags) {
 
    if (flags & CLAP_FD_READ) {
       if (!it->second->rd) {
-         it->second->rd.reset(new QSocketNotifier(fd, QSocketNotifier::Read));
+         it->second->rd.reset(new QSocketNotifier((qintptr) fd, QSocketNotifier::Read));
          QObject::connect(it->second->rd.get(), &QSocketNotifier::activated, [this, fd] {
             checkForMainThread();
             _pluginFdSupport->on_fd(this->_plugin, fd, CLAP_FD_READ);
@@ -551,7 +551,7 @@ void PluginHost::eventLoopSetFdNotifierFlags(clap_fd fd, uint32_t flags) {
 
    if (flags & CLAP_FD_WRITE) {
       if (!it->second->wr) {
-         it->second->wr.reset(new QSocketNotifier(fd, QSocketNotifier::Write));
+         it->second->wr.reset(new QSocketNotifier((qintptr)fd, QSocketNotifier::Write));
          QObject::connect(it->second->wr.get(), &QSocketNotifier::activated, [this, fd] {
             checkForMainThread();
             _pluginFdSupport->on_fd(this->_plugin, fd, CLAP_FD_WRITE);
@@ -563,7 +563,7 @@ void PluginHost::eventLoopSetFdNotifierFlags(clap_fd fd, uint32_t flags) {
 
    if (flags & CLAP_FD_ERROR) {
       if (!it->second->err) {
-         it->second->err.reset(new QSocketNotifier(fd, QSocketNotifier::Exception));
+         it->second->err.reset(new QSocketNotifier((qintptr)fd, QSocketNotifier::Exception));
          QObject::connect(it->second->err.get(), &QSocketNotifier::activated, [this, fd] {
             checkForMainThread();
             _pluginFdSupport->on_fd(this->_plugin, fd, CLAP_FD_ERROR);
