@@ -292,7 +292,7 @@ void PluginHost::setParentWindow(WId parentWindow) {
    if (_pluginGuiCocoa)
       didAttach = _pluginGuiCocoa->attach(_plugin, (void *)parentWindow);
 #elif defined(Q_OS_WIN32)
-   if (_pluginEmbedWin32)
+   if (_pluginGuiWin32)
       didAttach = _pluginGuiWin32->attach(_plugin, parentWindow);
 #endif
    // else (_pluginGuiFreeStanding)
