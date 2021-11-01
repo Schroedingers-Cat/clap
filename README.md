@@ -113,6 +113,15 @@ Qt6 requires you to create an account during installation, but you can also comp
 choco install python strawberryperl -y # install Python3 and Perl
 git clone -b 6.2.1 git://code.qt.io/qt/qt5.git
 cd qt5
+```
+
+Now, if you want to initialize only the submodules (dependencies) necessary for clap:
+```powershell
+perl init-repository --module-subset=essential,addon,-qtwebengine,-qtactiveqt,-qt3d,-qtlottie,-qtdatavis3d,-qtgamepad,-qtpurchasing,-qtquick3d,-qtquickcontrols,-qtquicktimeline,-qtspeech,-qtvirtualkeyboard,-qtwayland,-qtsensors,-qtserialbus,-qtserialport,-qtscxml,-qtremoteobjects,-qtqa
+```
+
+For initializing with default settings (a lot more dependencies):
+```powershell
 perl init-repository
 ```
 Open a `x64 Native Tools Command Prompt for VS 2019` terminal and run:
