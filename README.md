@@ -109,7 +109,7 @@ brew install pkgconfig
 For the example host you'll need to install Qt6, PortAudio and PortMidi.  
 
 Qt6 requires you to create an account during installation, but you can also compile it from source. If you're building with MSVC, you cannot use the prebuilt Qt6 (mingw) or you'll get linker errors. For building from source:
-´´´powershell
+```powershell
 choco install python strawberryperl ninja -y # install Python3, Ninja and Perl
 git clone -b 6.2.1 git://code.qt.io/qt/qt5.git
 cd qt5
