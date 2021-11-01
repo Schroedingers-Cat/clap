@@ -124,12 +124,14 @@ For initializing with default settings (a lot more dependencies):
 ```powershell
 perl init-repository
 ```
-Open a `x64 Native Tools Command Prompt for VS 2019` terminal and run:
+
+Open a `x64 Native Tools Command Prompt for VS 2019` terminal, go to the newly cloned Qt git repo and run:
 ```batch
 mkdir /c/Qt/6.2.1
-mkdir qt5/build
-cd qt5
+mkdir build
+cd build
 ..\configure.bat -release -no-pch -prefix "c:/Qt/6.2.1-git" -skip qtwebengine -nomake tools -nomake tests -nomake examples
+::The following command failed on some of my machines, but repeating it multiple times made it work at some point ...
 cmake --build . --parallel
 cmake --install .
 ```
