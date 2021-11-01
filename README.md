@@ -136,4 +136,10 @@ cmake --install .
 
 After building/installation, you'll have to put the `bin` path to the %PATH% system environment variable, like `C:\Qt\6.2.1\mingw81_64\bin` (downloaded installer) or `C:\Qt\6.2.1` (built from source). Additionally, add the `QT_PLUGIN_PATH` environment variable with `C:\Qt\6.2.1\mingw81_64\plugins` (downloaded installer) or `C:\Qt\6.2.1-git\plugins` (built from source).
 
-For the rest of the dependencies, CMake should be able to automatically detect vcpkg, bootstrap and acquire the necessary packages.
+The rest of the dependencies will be handled through vcpkg. So checkout the vcpkg submodule included in this repository:
+```powershell
+git submodule init
+git submodule update
+```
+
+From now on, CMake should be able to automatically detect vcpkg, bootstrap and acquire the necessary packages.
