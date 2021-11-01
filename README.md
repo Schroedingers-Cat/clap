@@ -145,3 +145,5 @@ git submodule update
 ```
 
 From now on, CMake should be able to automatically detect vcpkg, bootstrap and acquire the necessary packages.
+
+The generated solutions will have two problems that need manual fixing atm. You'll have to fix the "Additional Dependencies" path in the clap-host solution in the linker settings from `portmidi.lib` to `..\..\vcpkg_installed\x64-windows\debug\lib\portaudio.lib`. Also, the "Additional options" compiler settings should not have the `no-vadli-offset` parameter removed (happens only sometimes).
