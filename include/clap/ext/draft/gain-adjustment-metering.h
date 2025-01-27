@@ -23,7 +23,8 @@ typedef struct clap_plugin_gain_adjustment_metering {
   // value means the plugin is adding gain, as with an expander. The value
   // represents the dynamic gain reduction or expansion applied by the
   // plugin, before any make-up gain or other adjustment. A single value is
-  // returned for all audio channels.
+  // returned for all audio channels, representing the maximum gain reduction 
+  // (or gain increase) across all channels.
   //
   // [audio-thread]
   double(CLAP_ABI *get)(const clap_plugin_t *plugin);
